@@ -17,7 +17,7 @@
     
     // ****************************************************************************
     // Uncomment and fill in with your Parse credentials:
-    [Parse setApplicationId:@"UtPrAGIZDR3gUHbdqBYitFKpXKeedB7tNMfIe2N0" clientKey:@"eBwZV5p5etREMwehakdh6yxKGdAliLDElr949TNG"];
+    
     // ****************************************************************************
     
     // Override point for customization after application launch.

@@ -9,6 +9,7 @@
 #import "detailViewController.h"
 #import <Parse/Parse.h>
 
+
 @interface detailViewController ()
 
 @end
@@ -38,6 +39,7 @@
 @synthesize startLabel;
 @synthesize incomingPoint;
 @synthesize resString;
+@synthesize mapView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,12 +55,24 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     [nameLabel setText:nameString];
     [locationLabel setText:locationString];
     [startLabel setText:startString];
     NSLog(@"lat %f", incomingPoint.latitude);
     
-    
+//    CLLocationCoordinate2D myCoordinate = {incomingPoint.latitude, incomingPoint.longitude};
+//    //Create your annotation
+//    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+//    [annotation setCoordinate:myCoordinate];
+//    [annotation setTitle:@"Title"]; //You can set the subtitle too
+//    [self.mapView addAnnotation:annotation];
+
+    MKPointAnnotation *ann = [[MKPointAnnotation alloc] init];
+    ann.title = @"The title";
+    ann.subtitle = @"A subtitle";
+    ann.coordinate = CLLocationCoordinate2DMake (40.123456, 110.123456);
+    [self.mapView addAnnotation:ann];
     
     
 }
@@ -99,8 +113,8 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm Cancel"
                                                         message:titleHolder
                                                        delegate:self
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
+                                              cancelButtonTitle:@"Cancel"
+                                              otherButtonTitles:@"Yes, unsignup!!", nil];
         [alert setTag:1];
         [alert show];
     }
@@ -128,17 +142,46 @@
                     signedUp = YES;
                     [reservation setObject:[NSNumber numberWithBool:YES] forKey:@"status"];
                     [reservation save];
+                    replyButton.titleLabel.text = @"click to unsign-up";
 
                 }else{
                     signedUp = NO;
                     [reservation setObject:[NSNumber numberWithBool:NO] forKey:@"status"];
                     [reservation save];
-
+                    replyButton.titleLabel.text = @"click to sign-up";
                 }
                 
             }
             break;
-            
+        case 1:
+            if (buttonIndex == 0) {
+                NSLog(@"zero");
+            }
+            if (buttonIndex == 1) {
+                NSLog(@"one");
+                PFObject *reservation = [PFObject objectWithClassName:resString];
+                PFUser *user = [PFUser currentUser];
+                [reservation setObject:user.username forKey:@"userString"];
+                //[reservation setObject:user.username forKey:@"userName"];
+                
+                [self sendEmail];
+                if (signedUp) {
+                    signedUp = NO;
+                    [reservation setObject:[NSNumber numberWithBool:NO] forKey:@"status"];
+                    [reservation save];
+                    replyButton.titleLabel.text = @"click to sign-up";
+                    
+                }else{
+                    signedUp = YES;
+                    [reservation setObject:[NSNumber numberWithBool:YES] forKey:@"status"];
+                    [reservation save];
+                    replyButton.titleLabel.text = @"click to unsign-up";
+                    
+                }
+                
+            }
+            break;
+
         default:
             break;
     }

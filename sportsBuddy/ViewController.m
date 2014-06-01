@@ -25,6 +25,7 @@
     NSMutableArray *endArray;
     NSMutableArray *geoArray;
     NSMutableArray *reservationArray;
+    NSMutableArray *isReservedArray;
     ISRefreshControl *refreshControl;
     NSString *nameString;
     NSString *locationString;
@@ -43,7 +44,6 @@
     NSString *objectHolder;
     BOOL signedUp;
     NSNumber *filterNum;
-    
 }
 
 @synthesize mainTable;
@@ -55,8 +55,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     
-    // pull down data from parse
-    
+//    // pull down data from parse
+//    
     nameArray = [[NSMutableArray alloc] init];
     imageArray = [[NSMutableArray alloc] init];
     locationArray = [[NSMutableArray alloc] init];
@@ -64,6 +64,7 @@
     endArray = [[NSMutableArray alloc] init];
     geoArray = [[NSMutableArray alloc] init];
     reservationArray = [[NSMutableArray alloc] init];
+    isReservedArray = [[NSMutableArray alloc] init];
     
     PFQuery *userQuery = [PFQuery queryWithClassName:@"userType"];
     [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -72,9 +73,16 @@
             NSLog(@"Successfully retrieved %lu record.", (unsigned long)objects.count);
             // Do something with the found objects
             
+            PFUser *user = [PFUser currentUser];
+            NSString *tempString = user.username;
+            
             for (PFObject *record in objects) {
-                filterNum = record[@"typeNum"];
-                NSLog(@"filterNum %@", filterNum);
+                
+                if ([record[@"userName"] isEqualToString:tempString]) {
+                    filterNum = record[@"typeNum"];
+                    NSLog(@"filterNum %@", filterNum);
+                }
+                
             }
             
             //NSArray *tempHolder = objects;
@@ -97,11 +105,59 @@
     }];
     
     
-    
+    //[self pullMainData];
     
 }
 
+-(void)setTheFilter{
+    PFQuery *userQuery = [PFQuery queryWithClassName:@"userType"];
+    [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %lu record.", (unsigned long)objects.count);
+            // Do something with the found objects
+            
+            PFUser *user = [PFUser currentUser];
+            NSString *tempString = user.username;
+            
+            for (PFObject *record in objects) {
+                
+                if ([record[@"userName"] isEqualToString:tempString]) {
+                    filterNum = record[@"typeNum"];
+                    NSLog(@"filterNum %@", filterNum);
+                }
+                
+            }
+            
+            //NSArray *tempHolder = objects;
+            
+            
+            
+            
+            [self pullMainData];
+            
+            
+            
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    }];
+    //[self pullMainData];
+
+}
+
 -(void)pullMainData{
+    
+    nameArray = [[NSMutableArray alloc] init];
+    imageArray = [[NSMutableArray alloc] init];
+    locationArray = [[NSMutableArray alloc] init];
+    startArray = [[NSMutableArray alloc] init];
+    endArray = [[NSMutableArray alloc] init];
+    geoArray = [[NSMutableArray alloc] init];
+    reservationArray = [[NSMutableArray alloc] init];
+    
     PFQuery *query = [PFQuery queryWithClassName:@"events"];
     
     //refreshControl = (id)[[ISRefreshControl alloc] init];
@@ -121,7 +177,7 @@
                 int filterholder = [filterNum intValue];
                 if (switchint == filterholder) {
                     switch (switchint) {
-                        case 0:
+                        case 1:
                         {
                             [nameArray addObject:record[@"eventName"]];
                             [imageArray addObject:record[@"eventImage"]];
@@ -131,9 +187,10 @@
                             [geoArray addObject:record[@"eventGeoPoint"]];
                             [reservationArray addObject:record[@"reservationTable"]];
                             
+                            
                         }
                             break;
-                        case 1:
+                        case 2:
                         {
                             [nameArray addObject:record[@"eventName"]];
                             [imageArray addObject:record[@"eventImage"]];
@@ -158,13 +215,10 @@
             //NSArray *tempHolder = objects;
             
             
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
-                
-            }
+            
             
             [mainTable reloadData];
-            
+            //[self filterReservations];
             
         } else {
             // Log details of the failure
@@ -172,6 +226,52 @@
         }
     }];
 
+}
+
+-(void)filterReservations{
+    for (int i = 0; i < reservationArray.count; i++) {
+        
+        PFQuery *userQuery = [PFQuery queryWithClassName:[reservationArray objectAtIndex:i]];
+        [userQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+            if (!error) {
+                // The find succeeded.
+                NSLog(@"filter retrieved %lu record.", (unsigned long)objects.count);
+                // Do something with the found objects
+                
+                PFUser *user = [PFUser currentUser];
+                NSString *tempString = user.username;
+                
+                for (PFObject *record in objects) {
+                    
+                    if ([record[@"userString"] isEqualToString:tempString]) {
+                        BOOL isReserved;
+                        isReserved = record[@"status"];
+                        NSLog(isReserved ? @"Yes" : @"No");
+                        //[isReservedArray addObject:isReserved];
+                    }
+                    
+                }
+                
+                //NSArray *tempHolder = objects;
+                
+                
+//                for (PFObject *object in objects) {
+//                    NSLog(@"%@", object.objectId);
+//                    
+//                }
+                
+                //[self pullMainData];
+                [mainTable reloadData];
+                
+                
+                
+            } else {
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+        }];
+
+    }
 }
 
 -(void)reloadTheData{
@@ -452,7 +552,7 @@
 
 - (IBAction)refreshClicked:(id)sender {
     //[mainTable reloadData];
-    [self reloadTheData];
+    [self setTheFilter];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

@@ -15,6 +15,8 @@
 @synthesize locationLabel;
 @synthesize startLabel;
 @synthesize endLabel;
+@synthesize yesImage;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

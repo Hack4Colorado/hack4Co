@@ -11,6 +11,7 @@
 		4265A2FE193A9A02005C6763 /* icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4265A2FB193A9A02005C6763 /* icon-60@2x.png */; };
 		4265A2FF193A9A02005C6763 /* icon29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4265A2FC193A9A02005C6763 /* icon29@2x.png */; };
 		4265A302193A9CEA005C6763 /* detailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4265A301193A9CEA005C6763 /* detailViewController.m */; };
+		4265A304193B0218005C6763 /* borat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4265A303193B0218005C6763 /* borat.png */; };
 		42BC45FC193A604E00F28750 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42BC45FB193A604E00F28750 /* Foundation.framework */; };
 		42BC45FE193A604E00F28750 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42BC45FD193A604E00F28750 /* CoreGraphics.framework */; };
 		42BC4600193A604E00F28750 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42BC45FF193A604E00F28750 /* UIKit.framework */; };
@@ -62,6 +63,7 @@
 		4265A2FC193A9A02005C6763 /* icon29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon29@2x.png"; sourceTree = "<group>"; };
 		4265A300193A9CEA005C6763 /* detailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailViewController.h; sourceTree = "<group>"; };
 		4265A301193A9CEA005C6763 /* detailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailViewController.m; sourceTree = "<group>"; };
+		4265A303193B0218005C6763 /* borat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = borat.png; sourceTree = "<group>"; };
 		42BC45F8193A604E00F28750 /* sportsBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sportsBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42BC45FB193A604E00F28750 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		42BC45FD193A604E00F28750 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -247,6 +249,7 @@
 		42BC4651193A7B2600F28750 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				4265A303193B0218005C6763 /* borat.png */,
 				4265A2FA193A9A02005C6763 /* icon-40@2x.png */,
 				4265A2FB193A9A02005C6763 /* icon-60@2x.png */,
 				4265A2FC193A9A02005C6763 /* icon29@2x.png */,
@@ -339,6 +342,7 @@
 			files = (
 				42BC4614193A604E00F28750 /* Images.xcassets in Resources */,
 				42BC4655193A827600F28750 /* ski@2x.png in Resources */,
+				4265A304193B0218005C6763 /* borat.png in Resources */,
 				4265A2FE193A9A02005C6763 /* icon-60@2x.png in Resources */,
 				42BC4653193A7B2600F28750 /* one@2x.png in Resources */,
 				42BC4606193A604E00F28750 /* InfoPlist.strings in Resources */,
@@ -538,6 +542,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sportsBuddy/sportsBuddy-Prefix.pch";
 				INFOPLIST_FILE = "sportsBuddy/sportsBuddy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					QuartzCore,
@@ -563,6 +568,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sportsBuddy/sportsBuddy-Prefix.pch";
 				INFOPLIST_FILE = "sportsBuddy/sportsBuddy-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					QuartzCore,

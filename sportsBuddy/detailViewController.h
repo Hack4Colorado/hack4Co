@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import <MapKit/MapKit.h>
 
-@interface detailViewController : UIViewController <UIAlertViewDelegate>
+@interface detailViewController : UIViewController <UIAlertViewDelegate, MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 
 @property (nonatomic, strong) NSString *nameString;
@@ -21,6 +22,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UILabel *startLabel;
 @property (weak, nonatomic) PFGeoPoint *incomingPoint;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+
+
 
 
 @end

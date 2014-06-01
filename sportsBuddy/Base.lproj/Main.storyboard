@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="DJN-7D-LEN">
     <dependencies>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -32,8 +33,8 @@
                                                     <rect key="frame" x="8" y="4" width="125" height="85"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="172" translatesAutoresizingMaskIntoConstraints="NO" id="5Pl-De-ARZ">
-                                                    <rect key="frame" x="141" y="4" width="172" height="51"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Pl-De-ARZ">
+                                                    <rect key="frame" x="141" y="4" width="130" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -46,17 +47,21 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6DJ-Nn-Kdb">
-                                                    <rect key="frame" x="141" y="72" width="66" height="21"/>
+                                                    <rect key="frame" x="141" y="72" width="106" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5G1-kf-IQa">
-                                                    <rect key="frame" x="227" y="72" width="79" height="21"/>
+                                                    <rect key="frame" x="248" y="72" width="79" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvd-30-fqB">
+                                                    <rect key="frame" x="262" y="7" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -65,6 +70,7 @@
                                             <outlet property="nameLabel" destination="5Pl-De-ARZ" id="oNP-Ax-qw4"/>
                                             <outlet property="startLabel" destination="6DJ-Nn-Kdb" id="XTe-f5-QAu"/>
                                             <outlet property="thumbImage" destination="W4I-3f-Ihg" id="fQT-yc-tFQ"/>
+                                            <outlet property="yesImage" destination="Xvd-30-fqB" id="A5z-cf-QqL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -161,6 +167,9 @@ To Sign up
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qTW-vB-ZO8">
                                 <rect key="frame" x="0.0" y="276" width="320" height="292"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="pmV-3S-GVU" id="N3n-yb-7mz"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -168,6 +177,7 @@ To Sign up
                     <navigationItem key="navigationItem" id="c7F-3Z-bEg"/>
                     <connections>
                         <outlet property="locationLabel" destination="3N9-lY-ltq" id="IWW-xV-6SS"/>
+                        <outlet property="mapView" destination="qTW-vB-ZO8" id="9oF-rn-c6z"/>
                         <outlet property="nameLabel" destination="fLX-67-rwl" id="gyc-qv-Rsx"/>
                         <outlet property="replyButton" destination="yv4-ST-6wK" id="QzF-cH-UYn"/>
                         <outlet property="startLabel" destination="bcH-WT-IMP" id="nz7-FH-1m8"/>

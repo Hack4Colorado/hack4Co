@@ -1,0 +1,16 @@
+PODS:
+  - ISMethodSwizzling (0.0.2)
+  - ISRefreshControl (1.4.1):
+    - ISMethodSwizzling (~> 0.0.2)
+  - RQShineLabel (0.1.1)
+
+DEPENDENCIES:
+  - ISRefreshControl (~> 1.4.1)
+  - RQShineLabel
+
+SPEC CHECKSUMS:
+  ISMethodSwizzling: 867d17ca20bd0ca2d3e7c1516a0c1f0ee9ca94c9
+  ISRefreshControl: a22ffc641933ca489b85d192d591546f93c47d07
+  RQShineLabel: aa840ab0daec4a327d43c069dc7aaf545763e7be
+
+COCOAPODS: 0.32.1

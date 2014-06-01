@@ -1,0 +1,3 @@
+platform :ios, '7'
+pod 'ISRefreshControl', '~> 1.4.1'
+pod 'RQShineLabel'

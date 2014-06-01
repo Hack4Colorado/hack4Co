@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-ISMethodSwizzling.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ISRefreshControl.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-RQShineLabel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>2C557F6B3FB6409EAF1DE215</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>312A6147BCF7478A87AE2875</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3326991BF6D34D7F85B11847</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C57A54C329A94804A3AEECAB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
